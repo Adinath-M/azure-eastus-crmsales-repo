@@ -9,9 +9,9 @@
 			"database": "supplychain",
 			"encrypt": "mandatory",
 			"trustServerCertificate": false,
-			"authenticationType": "Windows",
+			"authenticationType": "SQL",
 			"userName": "adinathmahalle",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlODRkMDY0Mi1hMDg5LTRjOTctYmU1Mi1jNTA5NzI1MDk2NDgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1M2U2YzM5Yy1hYjE0LTQ1M2ItODczMS1mZTc4ZWFmYjk2MWQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSQL",
