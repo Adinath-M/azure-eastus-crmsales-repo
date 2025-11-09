@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dfazureeastus"
+		},
+		"ls_adls_supplychain_accountKey": {
+			"value": ""
+		},
+		"ls_onepremsqlserver_password": {
+			"value": ""
+		},
+		"ls_adls_supplychain_properties_typeProperties_url": {
+			"value": "https://stazureeastus.dfs.core.windows.net/"
+		},
+		"ls_onepremsqlserver_properties_typeProperties_server": {
+			"value": "MORYA\\SQLEXPRESS"
+		},
+		"ls_onepremsqlserver_properties_typeProperties_database": {
+			"value": "supplychain"
+		},
+		"ls_onepremsqlserver_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
