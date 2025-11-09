@@ -1,0 +1,20 @@
+{
+	"name": "Transactions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_supplychain",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "transactions",
+				"fileSystem": "bronze"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
