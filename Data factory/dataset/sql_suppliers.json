@@ -1,0 +1,47 @@
+{
+	"name": "sql_suppliers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_onepremsqlserver",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "SupplierID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SupplierName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SupplierType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ContactPerson",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RegionID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Suppliers"
+		}
+	}
+}

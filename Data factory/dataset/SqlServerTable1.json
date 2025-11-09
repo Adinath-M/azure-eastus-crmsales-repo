@@ -65,7 +65,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Transactions"
+			"table": "Buyers"
 		}
 	}
 }

@@ -1,0 +1,47 @@
+{
+	"name": "sql_buyers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_onepremsqlserver",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "BuyerID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BuyerName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BuyerType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ContactPerson",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RegionID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Buyers"
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"name": "sql_paymentterms",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_onepremsqlserver",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "PaymentTermID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TermName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DaysDue",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "PaymentTerms"
+		}
+	}
+}

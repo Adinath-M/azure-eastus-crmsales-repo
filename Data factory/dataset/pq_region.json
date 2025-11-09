@@ -1,5 +1,5 @@
 {
-	"name": "Transactions",
+	"name": "pq_region",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_supplychain",
@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "buyers",
-				"folderPath": "buyers",
+				"fileName": "region",
+				"folderPath": "region",
 				"fileSystem": "bronze"
 			},
 			"compressionCodec": "snappy"

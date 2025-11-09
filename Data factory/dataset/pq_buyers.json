@@ -1,5 +1,5 @@
 {
-	"name": "Transactions",
+	"name": "pq_buyers",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_supplychain",
