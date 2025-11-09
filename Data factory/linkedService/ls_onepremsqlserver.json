@@ -5,13 +5,13 @@
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"server": "(localdb)\\Local",
+			"server": "MORYA\\SQLEXPRESS",
 			"database": "supplychain",
-			"encrypt": "mandatory",
-			"trustServerCertificate": false,
+			"encrypt": "optional",
+			"trustServerCertificate": true,
 			"authenticationType": "SQL",
-			"userName": "adinathmahalle",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1M2U2YzM5Yy1hYjE0LTQ1M2ItODczMS1mZTc4ZWFmYjk2MWQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"userName": "sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3MDUyMDQwZS0yMjk5LTQ2NmItYmEzMy1jMDE1M2ZhM2QxMTciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSQL",
