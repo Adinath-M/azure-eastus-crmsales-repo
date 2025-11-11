@@ -41,7 +41,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SqlServerTable1",
+						"referenceName": "src_transactions",
 						"type": "DatasetReference"
 					}
 				],
