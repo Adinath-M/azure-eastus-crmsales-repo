@@ -47,7 +47,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Transactions",
+						"referenceName": "pq_transactions",
 						"type": "DatasetReference"
 					}
 				]

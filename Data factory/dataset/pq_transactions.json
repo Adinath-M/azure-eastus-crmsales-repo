@@ -1,0 +1,21 @@
+{
+	"name": "pq_transactions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_supplychain",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "transactions",
+				"folderPath": "transactions",
+				"fileSystem": "bronze"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
