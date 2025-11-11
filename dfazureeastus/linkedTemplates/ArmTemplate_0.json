@@ -64,34 +64,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ls_onepremsqlserver')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"server": "[parameters('ls_onepremsqlserver_properties_typeProperties_server')]",
-					"database": "[parameters('ls_onepremsqlserver_properties_typeProperties_database')]",
-					"encrypt": "optional",
-					"trustServerCertificate": true,
-					"authenticationType": "SQL",
-					"userName": "[parameters('ls_onepremsqlserver_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('ls_onepremsqlserver_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "integrationRuntimeSQL",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeSQL')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Transactions')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -144,7 +116,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pq_suppliers')]",
+			"name": "[concat(parameters('factoryName'), '/pq_paymentterms')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -157,8 +129,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "suppliers",
-						"folderPath": "suppliers",
+						"fileName": "paymentterms",
+						"folderPath": "paymentterms",
 						"fileSystem": "bronze"
 					},
 					"compressionCodec": "snappy"
@@ -196,7 +168,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pq_paymentterms')]",
+			"name": "[concat(parameters('factoryName'), '/pq_suppliers')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -209,8 +181,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "paymentterms",
-						"folderPath": "paymentterms",
+						"fileName": "suppliers",
+						"folderPath": "suppliers",
 						"fileSystem": "bronze"
 					},
 					"compressionCodec": "snappy"
@@ -219,6 +191,60 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_adls_supplychain')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pq_transactions')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_adls_supplychain",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "transactions",
+						"folderPath": "transactions",
+						"fileSystem": "bronze"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_supplychain')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_onepremsqlserver')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('ls_onepremsqlserver_properties_typeProperties_server')]",
+					"database": "[parameters('ls_onepremsqlserver_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_onepremsqlserver_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_onepremsqlserver_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntimeSQL",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeSQL')]"
 			]
 		},
 		{
@@ -350,6 +376,89 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/sql_paymentterms')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_onepremsqlserver",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "PaymentTermID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "TermName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DaysDue",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "PaymentTerms"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_onepremsqlserver')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sql_region')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_onepremsqlserver",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
+					{
+						"name": "RegionID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "RegionName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Country",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BankName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CurrencyCode",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Region"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_onepremsqlserver')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/sql_suppliers')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -402,7 +511,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/sql_region')]",
+			"name": "[concat(parameters('factoryName'), '/src_transactions')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -413,71 +522,64 @@
 				"annotations": [],
 				"type": "SqlServerTable",
 				"schema": [
+					{
+						"name": "TransactionID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "TransactionDate",
+						"type": "date"
+					},
+					{
+						"name": "BuyerID",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "SupplierID",
+						"type": "int",
+						"precision": 10
+					},
 					{
 						"name": "RegionID",
 						"type": "int",
 						"precision": 10
 					},
 					{
-						"name": "RegionName",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Country",
-						"type": "nvarchar"
-					},
-					{
-						"name": "BankName",
-						"type": "nvarchar"
-					},
-					{
-						"name": "CurrencyCode",
-						"type": "nvarchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "Region"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_onepremsqlserver')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/sql_paymentterms')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_onepremsqlserver",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "SqlServerTable",
-				"schema": [
-					{
 						"name": "PaymentTermID",
 						"type": "int",
 						"precision": 10
 					},
 					{
-						"name": "TermName",
+						"name": "ProductCategory",
 						"type": "nvarchar"
 					},
 					{
-						"name": "Description",
-						"type": "nvarchar"
-					},
-					{
-						"name": "DaysDue",
+						"name": "Quantity",
 						"type": "int",
 						"precision": 10
+					},
+					{
+						"name": "UnitPrice",
+						"type": "decimal",
+						"precision": 10,
+						"scale": 2
+					},
+					{
+						"name": "TotalAmount",
+						"type": "decimal",
+						"precision": 21,
+						"scale": 2
+					},
+					{
+						"name": "PaymentStatus",
+						"type": "nvarchar"
 					}
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "PaymentTerms"
+					"table": "Transactions"
 				}
 			},
 			"dependsOn": [
@@ -529,14 +631,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "SqlServerTable1",
+								"referenceName": "src_transactions",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "Transactions",
+								"referenceName": "pq_transactions",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -785,8 +887,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SqlServerTable1')]",
-				"[concat(variables('factoryId'), '/datasets/Transactions')]",
+				"[concat(variables('factoryId'), '/datasets/src_transactions')]",
+				"[concat(variables('factoryId'), '/datasets/pq_transactions')]",
 				"[concat(variables('factoryId'), '/datasets/sql_buyers')]",
 				"[concat(variables('factoryId'), '/datasets/pq_buyers')]",
 				"[concat(variables('factoryId'), '/datasets/sql_suppliers')]",
