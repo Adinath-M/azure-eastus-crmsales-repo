@@ -1,0 +1,29 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "df_dumps_transactions",
+						"type": "DatasetReference"
+					},
+					"name": "transactions"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "FixNonNumeric"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> transactions",
+				"transactions derive() ~> FixNonNumeric"
+			]
+		}
+	}
+}

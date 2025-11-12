@@ -1,0 +1,23 @@
+{
+	"name": "df_dumps_transactions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_supplychain",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "data flow.csv",
+				"fileSystem": "dumps"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
