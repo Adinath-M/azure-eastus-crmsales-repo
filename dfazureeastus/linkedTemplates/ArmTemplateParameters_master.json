@@ -14,6 +14,9 @@
 		"ls_adls_supplychain_properties_typeProperties_url": {
 			"value": "https://stazureeastus.dfs.core.windows.net/"
 		},
+		"ls_github_properties_typeProperties_url": {
+			"value": "https://github.com/"
+		},
 		"ls_onepremsqlserver_properties_typeProperties_server": {
 			"value": "MORYA\\SQLEXPRESS"
 		},
