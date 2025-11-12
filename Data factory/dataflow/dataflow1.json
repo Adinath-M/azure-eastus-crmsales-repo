@@ -13,16 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "FixNonNumeric"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> transactions",
-				"transactions derive() ~> FixNonNumeric"
+				"     ignoreNoFilesFound: false) ~> transactions"
 			]
 		}
 	}
