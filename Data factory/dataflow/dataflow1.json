@@ -24,6 +24,15 @@
 			"transformations": [
 				{
 					"name": "FixNonNumeric"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -41,11 +50,19 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> transactions",
 				"transactions derive(Quantity = iif(isInteger(Quantity),toInteger(Quantity),0),",
 				"          CustomerName = iif(isNull(CustomerName), 'N/A',lower(trim(CustomerName))),",
-				"          Region = upper(Region)) ~> FixNonNumeric",
-				"FixNonNumeric sink(allowSchemaDrift: true,",
+				"          Region = upper(Region),",
+				"          Price = toInteger(Price)) ~> FixNonNumeric",
+				"aggregate1 split(Region == 'NORTH',",
+				"     Region == 'EAST' ,",
+				"     disjoint: false) ~> split1@(North, EAST, Other)",
+				"derivedColumn1 aggregate(groupBy(Region),",
+				"     {Total Sales} = sum({Gross Sales})) ~> aggregate1",
+				"FixNonNumeric derive({Gross Sales} = Quantity*Price) ~> derivedColumn1",
+				"split1@North sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
