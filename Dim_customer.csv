@@ -1,0 +1,21 @@
+﻿CustomerID,CustomerName,Gender,AgeGroup,City,Region,AccountType,JoinDate,CreditScore,IsActive
+101,Rahul Sharma,M,25-34,Mumbai,West,Savings,15-02-2020,720,1
+102,Priya Mehta,F,25-34,Pune,West,Current,10-08-2019,690,1
+103,Amit Verma,M,35-44,Delhi,North,Savings,05-01-2021,650,1
+104,Neha Singh,F,18-24,Lucknow,North,Savings,20-05-2022,710,1
+105,Rajesh Kumar,M,45-54,Chennai,South,FixedDeposit,11-09-2018,780,1
+106,Ritu Das,F,25-34,Kolkata,East,Current,19-07-2021,640,1
+107,Arjun Nair,M,35-44,Kochi,South,Savings,01-12-2020,725,1
+108,Simran Kaur,F,18-24,Chandigarh,North,Savings,14-03-2023,705,1
+109,Vivek Rao,M,25-34,Hyderabad,South,Current,18-04-2019,695,1
+110,Sneha Joshi,F,35-44,Nagpur,West,Savings,25-10-2018,730,0
+111,Deepak Patil,M,25-34,Mumbai,West,FixedDeposit,10-01-2022,770,1
+112,Aarti Jain,F,35-44,Jaipur,North,Savings,02-02-2019,660,1
+113,Kunal Gupta,M,45-54,Bhopal,Central,Current,12-06-2020,750,1
+114,Meena Iyer,F,25-34,Chennai,South,Savings,05-11-2017,730,1
+115,Rohit Yadav,M,18-24,Indore,Central,Savings,18-05-2023,640,1
+116,Pooja Agarwal,F,35-44,Ahmedabad,West,Current,20-09-2021,700,1
+117,Nikhil Bansal,M,25-34,Delhi,North,Savings,29-03-2018,760,1
+118,Kavita Rao,F,45-54,Kolkata,East,FixedDeposit,12-12-2016,740,0
+119,Ankit Sharma,M,25-34,Pune,West,Current,06-06-2022,710,1
+120,Shreya Pillai,F,18-24,Kochi,South,Savings,11-01-2023,680,1
