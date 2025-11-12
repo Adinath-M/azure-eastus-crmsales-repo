@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "df_files_datacleaned",
+						"referenceName": "df_files_clean_Northdata",
 						"type": "DatasetReference"
 					},
 					"name": "transactionsclean"
@@ -57,7 +57,7 @@
 				"          Region = upper(Region),",
 				"          Price = toInteger(Price)) ~> FixNonNumeric",
 				"aggregate1 split(Region == 'NORTH',",
-				"     Region == 'EAST' ,",
+				"     Region == 'EAST',",
 				"     disjoint: false) ~> split1@(North, EAST, Other)",
 				"derivedColumn1 aggregate(groupBy(Region),",
 				"     {Total Sales} = sum({Gross Sales})) ~> aggregate1",
