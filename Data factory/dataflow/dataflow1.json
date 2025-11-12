@@ -12,12 +12,55 @@
 					"name": "transactions"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "df_files_datacleaned",
+						"type": "DatasetReference"
+					},
+					"name": "transactionsclean"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FixNonNumeric"
+				},
+				{
+					"name": "Discount"
+				},
+				{
+					"name": "discounttypechange"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          TransactionID as string,",
+				"          Date as string,",
+				"          CustomerName as string,",
+				"          Product as string,",
+				"          Quantity as string,",
+				"          Price as string,",
+				"          Discount as string,",
+				"          Region as string,",
+				"          Salesperson as string,",
+				"          PaymentStatus as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> transactions"
+				"     ignoreNoFilesFound: false) ~> transactions",
+				"transactions derive(Quantity = iif(isInteger(Quantity),toInteger(Quantity),0),",
+				"          CustomerName = iif(isNull(CustomerName), 'N/A',lower(trim(CustomerName)))\r",
+				",",
+				"          Region = upper(Region)) ~> FixNonNumeric",
+				"discounttypechange derive(Discount = ERROR_FUNCTION('iif(isNull(Discount)')) ~> Discount",
+				"FixNonNumeric derive(Discount = toInteger(Discount)) ~> discounttypechange",
+				"Discount sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> transactionsclean"
 			]
 		}
 	}
