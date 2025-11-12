@@ -587,8 +587,7 @@
 								"datasetParameters": {
 									"transactions": {},
 									"transactionsclean": {}
-								},
-								"linkedServiceParameters": {}
+								}
 							},
 							"staging": {},
 							"compute": {
