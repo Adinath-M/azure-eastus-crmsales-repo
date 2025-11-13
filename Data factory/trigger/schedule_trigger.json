@@ -2,7 +2,7 @@
 	"name": "schedule_trigger",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
@@ -16,7 +16,7 @@
 			"recurrence": {
 				"frequency": "Minute",
 				"interval": 15,
-				"startTime": "2025-11-13T12:54:00",
+				"startTime": "2025-11-13T12:55:00",
 				"timeZone": "India Standard Time"
 			}
 		}
