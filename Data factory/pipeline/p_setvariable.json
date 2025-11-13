@@ -58,7 +58,7 @@
 		],
 		"variables": {
 			"files": {
-				"type": "Array"
+				"type": "String"
 			}
 		},
 		"annotations": []
