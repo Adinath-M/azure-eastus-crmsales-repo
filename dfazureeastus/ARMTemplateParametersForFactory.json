@@ -25,6 +25,9 @@
 		},
 		"ls_onepremsqlserver_properties_typeProperties_userName": {
 			"value": "sa"
+		},
+		"storage_trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/951d69fb-994e-4871-96bf-5c7a9e55ca91/resourceGroups/rg-power_bi_integration-dev/providers/Microsoft.Storage/storageAccounts/stazureeastus"
 		}
 	}
 }

@@ -35,6 +35,10 @@
 			"type": "string",
 			"defaultValue": "sa"
 		},
+		"storage_trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/951d69fb-994e-4871-96bf-5c7a9e55ca91/resourceGroups/rg-power_bi_integration-dev/providers/Microsoft.Storage/storageAccounts/stazureeastus"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -100,6 +104,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"storage_trigger_properties_typeProperties_scope": {
+						"value": "[parameters('storage_trigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
