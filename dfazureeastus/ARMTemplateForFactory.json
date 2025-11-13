@@ -625,7 +625,7 @@
 				},
 				"variables": {
 					"files": {
-						"type": "String"
+						"type": "Array"
 					}
 				},
 				"annotations": []
@@ -1920,6 +1920,36 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/storage_trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "p_setvariable",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/dumps/blobs/sample",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('storage_trigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/p_setvariable')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/integrationRuntimeSQL')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -2008,36 +2038,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/df_dumps_transactions')]",
 				"[concat(variables('factoryId'), '/datasets/df_files_clean_Northdata')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/storage_trigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "p_setvariable",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/dumps/blobs/sample",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('storage_trigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/p_setvariable')]"
 			]
 		}
 	]

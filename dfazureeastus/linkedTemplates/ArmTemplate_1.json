@@ -83,7 +83,7 @@
 				},
 				"variables": {
 					"files": {
-						"type": "String"
+						"type": "Array"
 					}
 				},
 				"annotations": []
