@@ -7,7 +7,8 @@
 		},
 		"parameters": {
 			"file_name": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Fact_table_1.csv"
 			}
 		},
 		"annotations": [],
