@@ -468,11 +468,21 @@
 					"referenceName": "ls_adls_supplychain",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"file_name": {
+						"type": "string",
+						"defaultValue": "Fact_table_1.csv"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().file_name",
+							"type": "Expression"
+						},
 						"fileSystem": "dumps"
 					},
 					"columnDelimiter": ",",
