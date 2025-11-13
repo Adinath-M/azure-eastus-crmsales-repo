@@ -1,5 +1,5 @@
 {
-	"name": "src_param_bronze",
+	"name": "dest_parama_silver",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adls_supplychain",
@@ -23,7 +23,7 @@
 					"value": "@dataset().f_name",
 					"type": "Expression"
 				},
-				"fileSystem": "bronze"
+				"fileSystem": "silver"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
