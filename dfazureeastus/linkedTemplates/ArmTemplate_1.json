@@ -1133,7 +1133,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/schedule_trigger')]",
+			"name": "[concat(parameters('factoryName'), '/schedule')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1153,7 +1153,7 @@
 					"recurrence": {
 						"frequency": "Minute",
 						"interval": 15,
-						"startTime": "2025-11-13T12:58:00",
+						"startTime": "2025-11-12T13:02:00",
 						"timeZone": "India Standard Time"
 					}
 				}
